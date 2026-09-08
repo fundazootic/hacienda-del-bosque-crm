@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    /* Los paneles deslizantes viven fuera del lienzo: no deben generar scroll horizontal. */
+    @apply overflow-x-hidden bg-crema-100 text-carbon font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv01';
+  }
+
+  /* Scrollbar discreta, acorde a la paleta */
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-bosque-200;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-bosque-300;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::selection {
+    @apply bg-laton-200 text-bosque-800;
+  }
+}
+
+@layer components {
+  /* Microtipografía de marca: etiquetas en versalitas espaciadas */
+  .eyebrow {
+    @apply text-[11.5px] uppercase tracking-marca text-bosque-400 font-medium;
+  }
+
+  .filete {
+    @apply h-px w-full bg-gradient-to-r from-laton-400/60 via-laton-300/25 to-transparent;
+  }
+
+  .tarjeta {
+    @apply rounded-xl border border-crema-300/70 bg-white shadow-suave;
+  }
+
+  /* Barras de desplazamiento interiores (pestañas, tablero): discretas */
+  .scrollbar-fina::-webkit-scrollbar {
+    height: 4px;
+  }
+  .scrollbar-fina::-webkit-scrollbar-thumb {
+    @apply bg-crema-300;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Impresión
+ * Los reportes se llevan al comité en papel o en PDF: al imprimir se retiran
+ * el menú, el encabezado y los controles, y queda solo el contenido.
+ * ────────────────────────────────────────────────────────────────────────── */
+@media print {
+  aside,
+  header.sticky,
+  footer,
+  .no-imprimir {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .lg\:pl-\[264px\] {
+    padding-left: 0 !important;
+  }
+
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  /* Ninguna tarjeta debe partirse entre dos páginas */
+  section,
+  li {
+    break-inside: avoid;
+  }
+
+  /* Las sombras y los fondos de color se pierden en papel: se marcan con borde */
+  .shadow-suave,
+  .shadow-elevada {
+    box-shadow: none !important;
+  }
+}

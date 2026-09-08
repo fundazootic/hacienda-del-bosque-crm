@@ -1,0 +1,82 @@
+import type { Usuario } from '@/core/types'
+
+/** Equipo ficticio para el prototipo. */
+export const usuarios: Usuario[] = [
+  {
+    id: 'u-001',
+    nombre: 'Camila Restrepo Arboleda',
+    email: 'camila.restrepo@haciendadelbosque.co',
+    telefono: '+57 315 442 1180',
+    rol: 'gerencia',
+    cargo: 'Gerente General',
+    iniciales: 'CR',
+    activo: true,
+    fechaIngreso: '2019-03-11',
+  },
+  {
+    id: 'u-002',
+    nombre: 'Andrés Felipe Ocampo',
+    email: 'andres.ocampo@haciendadelbosque.co',
+    telefono: '+57 318 220 7745',
+    rol: 'comercial_interno',
+    cargo: 'Director Comercial',
+    iniciales: 'AO',
+    activo: true,
+    fechaIngreso: '2021-01-18',
+    metaMensual: 92000000,
+  },
+  {
+    id: 'u-003',
+    nombre: 'Valentina Zúñiga Caicedo',
+    email: 'valentina.zuniga@haciendadelbosque.co',
+    telefono: '+57 300 615 9032',
+    rol: 'comercial_interno',
+    cargo: 'Ejecutiva de Celebraciones',
+    iniciales: 'VZ',
+    activo: true,
+    fechaIngreso: '2022-07-04',
+    metaMensual: 68000000,
+  },
+  {
+    id: 'u-004',
+    nombre: 'Julián Escobar Mejía',
+    email: 'julian.escobar@haciendadelbosque.co',
+    telefono: '+57 310 887 4412',
+    rol: 'comercial_interno',
+    cargo: 'Ejecutivo de Cuentas Corporativas',
+    iniciales: 'JE',
+    activo: true,
+    fechaIngreso: '2023-02-20',
+    metaMensual: 74000000,
+  },
+  {
+    id: 'u-005',
+    nombre: 'Mauricio Lozano Vélez',
+    email: 'mauricio.lozano@externo.co',
+    telefono: '+57 316 903 5521',
+    rol: 'comercial_freelancer',
+    cargo: 'Asesor comercial externo',
+    iniciales: 'ML',
+    activo: true,
+    comisionPorcentaje: 8,
+    fechaIngreso: '2024-05-06',
+    metaMensual: 40000000,
+  },
+  {
+    id: 'u-006',
+    nombre: 'Daniela Sarmiento Rivas',
+    email: 'daniela.sarmiento@externo.co',
+    telefono: '+57 321 774 6690',
+    rol: 'comercial_freelancer',
+    cargo: 'Asesora de bodas y sociales',
+    iniciales: 'DS',
+    activo: true,
+    comisionPorcentaje: 7,
+    fechaIngreso: '2025-01-15',
+    metaMensual: 35000000,
+  },
+]
+
+export const usuarioPorId = (id: string) => usuarios.find((u) => u.id === id)
+
+export const nombreComercial = (id: string) => usuarioPorId(id)?.nombre ?? 'Sin asignar'

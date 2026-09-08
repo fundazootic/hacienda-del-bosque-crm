@@ -1,0 +1,9 @@
+node_modules/
+dist/
+publicacion/
+.unico/
+*.tsbuildinfo
+.DS_Store
+.vscode/
+.claude/
+scratchpad/
